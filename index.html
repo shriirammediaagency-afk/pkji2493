@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Wallpaper | Premium Wallpapers</title>
+    <meta name="description" content="Discover stunning high-resolution desktop and mobile wallpapers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splashScreen" class="splash-screen" style="cursor: pointer;" title="Click to skip">
+        <div class="splash-content">
+            <img src="logo.png.png" alt="Logo" class="splash-logo">
+            <h1 class="splash-text">WELCOME TO AURA WALLPAPER</h1>
+            <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; animation: splashFadeInUp 1s ease forwards 1s; opacity: 0;">Click anywhere to skip</p>
+        </div>
+    </div>
+
+    <!-- Eye Comfort Shield Overlay -->
+    <div id="eyeComfortOverlay" class="eye-comfort-overlay hidden"></div>
+
+    <!-- API Key Modal -->
+    <div id="apiKeyModal" class="modal-overlay hidden">
+        <div class="modal-content glass-effect">
+            <h2>Welcome to Aura Wallpaper</h2>
+            <p>To fetch breathtaking wallpapers, please enter your <a href="https://www.pexels.com/api/" target="_blank">Pexels API Key</a>.</p>
+            <div class="input-group">
+                <i class='bx bx-key'></i>
+                <input type="password" id="apiKeyInput" placeholder="Enter Pexels API Key...">
+            </div>
+            <button id="saveApiKeyBtn" class="primary-btn">Start Exploring</button>
+            <p class="modal-note">Your key is stored securely in your browser's local storage.</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass-effect">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png.png" alt="Logo" style="height: 70px; width: 70px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));">
+                <span>Aura Wallpaper</span>
+            </div>
+            
+            <div class="search-bar">
+                <i class='bx bx-search'></i>
+                <input type="text" id="searchInput" placeholder="Search wallpapers (e.g. Cyberpunk, Nature)...">
+            </div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="favorites.html" id="navFavorites" class="hidden">Favorites</a>
+                <a href="login.html" id="navLogin">Login</a>
+                <a href="signup.html" id="navSignup">Sign Up</a>
+                <a href="#" id="navLogout" class="hidden">Logout</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="dropdown-container" style="position: relative;">
+                    <button id="settingsDropdownBtn" class="icon-btn" title="Menu" style="overflow: hidden; padding: 0;">
+                        <img id="navProfileImage" src="" alt="Profile" class="hidden" style="width: 100%; height: 100%; object-fit: cover;">
+                        <i id="navProfileIcon" class='bx bx-cog'></i>
+                    </button>
+                    <div id="settingsDropdown" class="dropdown-menu hidden glass-effect">
+                        <a href="profile.html" class="dropdown-item" id="dropdownProfileLink"><i class='bx bx-user'></i> Profile</a>
+                        <button id="themeToggleBtn" class="dropdown-item" style="background: none; border: none; width: 100%; text-align: left; cursor: pointer; font-family: inherit; font-size: inherit;">
+                            <i class='bx bx-moon'></i> Dark Mode
+                        </button>
+                        <button id="eyeComfortBtn" class="dropdown-item" style="background: none; border: none; width: 100%; text-align: left; cursor: pointer; font-family: inherit; font-size: inherit;">
+                            <i class='bx bxs-low-vision'></i> Eye Comfort
+                        </button>
+                        <a href="about.html" class="dropdown-item"><i class='bx bx-info-circle'></i> About Us</a>
+                        <a href="contact.html" class="dropdown-item"><i class='bx bx-envelope'></i> Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <header class="hero">
+            <h1 class="gradient-text">Elevate Your Screen.</h1>
+            <p>Curated high-resolution wallpapers for every device.</p>
+            
+            <div class="scroll-wrapper" style="position: relative; display: flex; align-items: center; justify-content: center; margin-top: 2rem; gap: 0.5rem; width: 100%;">
+                <button id="scrollLeftBtn" class="icon-btn scroll-arrow" style="background: var(--bg-secondary); border: 1px solid var(--glass-border); flex-shrink: 0; z-index: 2;"><i class='bx bx-chevron-left'></i></button>
+                
+                <div class="horizontal-scroll" id="categoryScroll" style="scroll-behavior: smooth;">
+                    <!-- Categories -->
+                    <button class="filter-btn category-btn" data-query="Gaming wallpaper">
+                        <i class='bx bx-joystick'></i> Gaming
+                    </button>
+                    <button class="filter-btn category-btn" data-query="Live wallpaper">
+                        <i class='bx bx-video'></i> Live
+                    </button>
+                    <button class="filter-btn category-btn" data-query="Aesthetic wallpaper">
+                        <i class='bx bx-palette'></i> Aesthetic
+                    </button>
+
+                    <!-- Divider -->
+                    <div style="width: 1px; height: 30px; background: rgba(255,255,255,0.2); margin: auto 0.5rem; flex-shrink: 0;"></div>
+
+                    <!-- Orientations -->
+                    <button class="filter-btn active" data-orientation="all">
+                        <i class='bx bx-grid-alt'></i> All
+                    </button>
+                    <button class="filter-btn" data-orientation="landscape">
+                        <i class='bx bx-desktop'></i> Desktop
+                    </button>
+                    <button class="filter-btn" data-orientation="portrait">
+                        <i class='bx bx-mobile-alt'></i> Mobile
+                    </button>
+                </div>
+                
+                <button id="scrollRightBtn" class="icon-btn scroll-arrow" style="background: var(--bg-secondary); border: 1px solid var(--glass-border); flex-shrink: 0; z-index: 2;"><i class='bx bx-chevron-right'></i></button>
+            </div>
+        </header>
+
+        <section class="gallery-container">
+            <div id="loadingIndicator" class="loading-indicator hidden">
+                <div class="spinner"></div>
+                <p>Curating pixels...</p>
+            </div>
+            
+            <div id="gallery" class="gallery">
+                <!-- Wallpaper cards will be injected here -->
+            </div>
+            
+            <div id="loadMoreContainer" class="load-more-container hidden">
+                <button id="loadMoreBtn" class="secondary-btn">
+                    <span>Load More</span>
+                    <i class='bx bx-down-arrow-alt'></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Fullscreen Image Modal -->
+    <div id="imageModal" class="modal-overlay hidden">
+        <button id="closeImageBtn" class="close-btn"><i class='bx bx-x'></i></button>
+        <div class="full-image-container">
+            <img id="fullImage" src="" alt="Full Resolution">
+            <video id="fullVideo" src="" controls autoplay loop playsinline class="hidden"></video>
+            <div class="image-actions glass-effect">
+                <div class="photographer-info">
+                    <i class='bx bxs-camera'></i>
+                    <span id="photographerName">Photographer</span>
+                </div>
+                <div class="action-buttons">
+                    <a id="downloadBtn" href="#" target="_blank" class="primary-btn download-btn">
+                        <i class='bx bx-download'></i> Download Original
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
