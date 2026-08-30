@@ -1,167 +1,369 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura Wallpaper | Premium Wallpapers</title>
-    <meta name="description" content="Discover stunning high-resolution desktop and mobile wallpapers.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
+    <title>Pankaj Bhardwaj Official - Stock Market Education</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #eef2f3 0%, #8e9eab 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 12px;
+            color: #1f2937;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            padding: 24px 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #eff6ff;
+            color: #2563eb;
+            border: 1px solid #bfdbfe;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 105px;
+            height: 105px;
+            margin: 0 auto 14px auto;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #2563eb;
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.25);
+        }
+
+        .verified-tick {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background: #10b981;
+            color: white;
+            font-size: 10px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4b5563;
+            margin-bottom: 12px;
+        }
+
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            background: #f8fafc;
+            padding: 8px 12px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            font-size: 12px;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        .stars {
+            color: #f59e0b;
+        }
+
+        .cta-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+            margin-bottom: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+
+        .features-list {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px;
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #334155;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            background-color: #dcfce7;
+            color: #16a34a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #f1f5f9;
+            font-size: 11px;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links button {
+            background: none;
+            border: none;
+            color: #64748b;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        /* Modal / Pop-up */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            max-width: 380px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            text-align: left;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        .modal-header h3 {
+            font-size: 16px;
+            color: #111827;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .modal-body {
+            font-size: 12px;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
-    <!-- Splash Screen -->
-    <div id="splashScreen" class="splash-screen" style="cursor: pointer;" title="Click to skip">
-        <div class="splash-content">
-            <img src="logo.png.png" alt="Logo" class="splash-logo">
-            <h1 class="splash-text">WELCOME TO AURA WALLPAPER</h1>
-            <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; animation: splashFadeInUp 1s ease forwards 1s; opacity: 0;">Click anywhere to skip</p>
+
+    <div class="card">
+        <span class="top-badge">⚡ Verified Learning Community</span>
+
+        <div class="profile-container">
+            <img src="Pankaj11.jpg" alt="Pankaj Bhardwaj" class="profile-img">
+            <span class="verified-tick">✓</span>
+        </div>
+
+        <h1>Pankaj Bhardwaj Official</h1>
+        <div class="subtitle">Stock Market Education Platform</div>
+
+        <div class="social-proof">
+            <span>👥 15,000+ Active Learners</span>
+            <span>•</span>
+            <span class="stars">★ 4.9/5</span>
+        </div>
+
+        <a href="https://t.me/+LDjllZiRmQo4M2M1" class="cta-button">
+            <span>Join Free Telegram Community</span> →
+        </a>
+
+        <div class="features-list">
+            <div class="feature-item">
+                <span class="check-icon">✓</span>
+                <span>5+ Years Market & Technical Experience</span>
+            </div>
+            <div class="feature-item">
+                <span class="check-icon">✓</span>
+                <span>Daily Pre-Market Educational Analysis</span>
+            </div>
+            <div class="feature-item">
+                <span class="check-icon">✓</span>
+                <span>Strict Risk Management & Capital Rules</span>
+            </div>
+            <div class="feature-item">
+                <span class="check-icon">✓</span>
+                <span>Simple Concepts for Complete Beginners</span>
+            </div>
+            <div class="feature-item">
+                <span class="check-icon">✓</span>
+                <span>100% Free Educational Access</span>
+            </div>
+        </div>
+
+        <a href="https://t.me/+LDjllZiRmQo4M2M1" class="cta-button">
+            <span>Access Free Community</span> →
+        </a>
+
+        <div class="footer-links">
+            <button onclick="openModal('about')">About Us</button> • 
+            <button onclick="openModal('privacy')">Privacy Policy</button> • 
+            <button onclick="openModal('terms')">Terms</button> • 
+            <button onclick="openModal('disclaimer')">Disclaimer</button> • 
+            <button onclick="openModal('contact')">Contact Us</button>
         </div>
     </div>
 
-    <!-- Eye Comfort Shield Overlay -->
-    <div id="eyeComfortOverlay" class="eye-comfort-overlay hidden"></div>
-
-    <!-- API Key Modal -->
-    <div id="apiKeyModal" class="modal-overlay hidden">
-        <div class="modal-content glass-effect">
-            <h2>Welcome to Aura Wallpaper</h2>
-            <p>To fetch breathtaking wallpapers, please enter your <a href="https://www.pexels.com/api/" target="_blank">Pexels API Key</a>.</p>
-            <div class="input-group">
-                <i class='bx bx-key'></i>
-                <input type="password" id="apiKeyInput" placeholder="Enter Pexels API Key...">
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Title</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
-            <button id="saveApiKeyBtn" class="primary-btn">Start Exploring</button>
-            <p class="modal-note">Your key is stored securely in your browser's local storage.</p>
-        </div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="navbar glass-effect">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="logo.png.png" alt="Logo" style="height: 70px; width: 70px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));">
-                <span>Aura Wallpaper</span>
-            </div>
-            
-            <div class="search-bar">
-                <i class='bx bx-search'></i>
-                <input type="text" id="searchInput" placeholder="Search wallpapers (e.g. Cyberpunk, Nature)...">
-            </div>
-
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="favorites.html" id="navFavorites" class="hidden">Favorites</a>
-                <a href="login.html" id="navLogin">Login</a>
-                <a href="signup.html" id="navSignup">Sign Up</a>
-                <a href="#" id="navLogout" class="hidden">Logout</a>
-            </div>
-
-            <div class="nav-actions">
-                <div class="dropdown-container" style="position: relative;">
-                    <button id="settingsDropdownBtn" class="icon-btn" title="Menu" style="overflow: hidden; padding: 0;">
-                        <img id="navProfileImage" src="" alt="Profile" class="hidden" style="width: 100%; height: 100%; object-fit: cover;">
-                        <i id="navProfileIcon" class='bx bx-cog'></i>
-                    </button>
-                    <div id="settingsDropdown" class="dropdown-menu hidden glass-effect">
-                        <a href="profile.html" class="dropdown-item" id="dropdownProfileLink"><i class='bx bx-user'></i> Profile</a>
-                        <button id="themeToggleBtn" class="dropdown-item" style="background: none; border: none; width: 100%; text-align: left; cursor: pointer; font-family: inherit; font-size: inherit;">
-                            <i class='bx bx-moon'></i> Dark Mode
-                        </button>
-                        <button id="eyeComfortBtn" class="dropdown-item" style="background: none; border: none; width: 100%; text-align: left; cursor: pointer; font-family: inherit; font-size: inherit;">
-                            <i class='bx bxs-low-vision'></i> Eye Comfort
-                        </button>
-                        <a href="about.html" class="dropdown-item"><i class='bx bx-info-circle'></i> About Us</a>
-                        <a href="contact.html" class="dropdown-item"><i class='bx bx-envelope'></i> Contact Us</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main>
-        <header class="hero">
-            <h1 class="gradient-text">Elevate Your Screen.</h1>
-            <p>Curated high-resolution wallpapers for every device.</p>
-            
-            <div class="scroll-wrapper" style="position: relative; display: flex; align-items: center; justify-content: center; margin-top: 2rem; gap: 0.5rem; width: 100%;">
-                <button id="scrollLeftBtn" class="icon-btn scroll-arrow" style="background: var(--bg-secondary); border: 1px solid var(--glass-border); flex-shrink: 0; z-index: 2;"><i class='bx bx-chevron-left'></i></button>
-                
-                <div class="horizontal-scroll" id="categoryScroll" style="scroll-behavior: smooth;">
-                    <!-- Categories -->
-                    <button class="filter-btn category-btn" data-query="Gaming wallpaper">
-                        <i class='bx bx-joystick'></i> Gaming
-                    </button>
-                    <button class="filter-btn category-btn" data-query="Live wallpaper">
-                        <i class='bx bx-video'></i> Live
-                    </button>
-                    <button class="filter-btn category-btn" data-query="Aesthetic wallpaper">
-                        <i class='bx bx-palette'></i> Aesthetic
-                    </button>
-
-                    <!-- Divider -->
-                    <div style="width: 1px; height: 30px; background: rgba(255,255,255,0.2); margin: auto 0.5rem; flex-shrink: 0;"></div>
-
-                    <!-- Orientations -->
-                    <button class="filter-btn active" data-orientation="all">
-                        <i class='bx bx-grid-alt'></i> All
-                    </button>
-                    <button class="filter-btn" data-orientation="landscape">
-                        <i class='bx bx-desktop'></i> Desktop
-                    </button>
-                    <button class="filter-btn" data-orientation="portrait">
-                        <i class='bx bx-mobile-alt'></i> Mobile
-                    </button>
-                </div>
-                
-                <button id="scrollRightBtn" class="icon-btn scroll-arrow" style="background: var(--bg-secondary); border: 1px solid var(--glass-border); flex-shrink: 0; z-index: 2;"><i class='bx bx-chevron-right'></i></button>
-            </div>
-        </header>
-
-        <section class="gallery-container">
-            <div id="loadingIndicator" class="loading-indicator hidden">
-                <div class="spinner"></div>
-                <p>Curating pixels...</p>
-            </div>
-            
-            <div id="gallery" class="gallery">
-                <!-- Wallpaper cards will be injected here -->
-            </div>
-            
-            <div id="loadMoreContainer" class="load-more-container hidden">
-                <button id="loadMoreBtn" class="secondary-btn">
-                    <span>Load More</span>
-                    <i class='bx bx-down-arrow-alt'></i>
-                </button>
-            </div>
-        </section>
-    </main>
-
-    <!-- Fullscreen Image Modal -->
-    <div id="imageModal" class="modal-overlay hidden">
-        <button id="closeImageBtn" class="close-btn"><i class='bx bx-x'></i></button>
-        <div class="full-image-container">
-            <img id="fullImage" src="" alt="Full Resolution">
-            <video id="fullVideo" src="" controls autoplay loop playsinline class="hidden"></video>
-            <div class="image-actions glass-effect">
-                <div class="photographer-info">
-                    <i class='bx bxs-camera'></i>
-                    <span id="photographerName">Photographer</span>
-                </div>
-                <div class="action-buttons">
-                    <a id="downloadBtn" href="#" target="_blank" class="primary-btn download-btn">
-                        <i class='bx bx-download'></i> Download Original
-                    </a>
-                </div>
+            <div class="modal-body" id="modalContent">
+                Content...
             </div>
         </div>
     </div>
 
-    <script src="auth.js"></script>
-    <script src="app.js"></script>
+    <script>
+        const contentData = {
+            about: {
+                title: "About Us",
+                text: "Pankaj Bhardwaj Official is an educational platform dedicated to stock market technical analysis and market education. We teach risk management and technical concepts to foster informed trading skills."
+            },
+            privacy: {
+                title: "Privacy Policy",
+                text: "Your privacy is important to us. We do not collect or store personal user data on this page. Clicking external links leads to third-party services like Telegram, which follow their own privacy guidelines."
+            },
+            terms: {
+                title: "Terms & Conditions",
+                text: "By joining our channels, you acknowledge that all shared materials are purely for educational purposes. We do not provide financial investment recommendations or guaranteed income schemes."
+            },
+            disclaimer: {
+                title: "Risk Disclaimer",
+                text: "We are not SEBI registered advisors. Trading and investing in securities markets involve high risk. Past educational insights are not indicative of future performance. Consult a certified financial planner before investing."
+            },
+            contact: {
+                title: "Contact Us",
+                text: "For queries, support, or feedback, contact us through our official Telegram group or email us at support@pankajbhardwaj.com."
+            }
+        };
+
+        function openModal(key) {
+            document.getElementById('modalTitle').innerText = contentData[key].title;
+            document.getElementById('modalContent').innerText = contentData[key].text;
+            document.getElementById('infoModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('infoModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+
 </body>
 </html>
