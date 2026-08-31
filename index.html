@@ -131,6 +131,8 @@
             margin-bottom: 18px;
             transition: transform 0.2s, box-shadow 0.2s;
             animation: pulse 2s infinite;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
 
         @keyframes pulse {
@@ -252,24 +254,23 @@
         }
     </style>
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1357428183046183');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1357428183046183&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1357428183046183');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1357428183046183&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -290,7 +291,8 @@ src="https://www.facebook.com/tr?id=1357428183046183&ev=PageView&noscript=1"
             <span class="stars">★ 4.9/5</span>
         </div>
 
-        <a href="https://t.me/+LDjllZiRmQo4M2M1" class="cta-button">
+        <!-- Button 1 with Anti-Fake Click Protection -->
+        <a href="https://t.me/+LDjllZiRmQo4M2M1" onclick="trackSubscribeEvent(event, this)" class="cta-button">
             <span>Join Free Telegram Community</span> →
         </a>
 
@@ -317,7 +319,8 @@ src="https://www.facebook.com/tr?id=1357428183046183&ev=PageView&noscript=1"
             </div>
         </div>
 
-        <a href="https://t.me/+LDjllZiRmQo4M2M1" class="cta-button">
+        <!-- Button 2 with Anti-Fake Click Protection -->
+        <a href="https://t.me/+LDjllZiRmQo4M2M1" onclick="trackSubscribeEvent(event, this)" class="cta-button">
             <span>Access Free Community</span> →
         </a>
 
@@ -343,6 +346,35 @@ src="https://www.facebook.com/tr?id=1357428183046183&ev=PageView&noscript=1"
     </div>
 
     <script>
+        let isProcessingClick = false;
+
+        function trackSubscribeEvent(event, element) {
+            // 1. स्पैम और डबल-क्लिक रोकने के लिए
+            if (isProcessingClick) return;
+            isProcessingClick = true;
+
+            // 2. तुरंत Telegram खुलने से रोकें ताकि Pixel डेटा सही से फायर हो सके
+            if (event) {
+                event.preventDefault();
+            }
+
+            const targetUrl = element.getAttribute('href');
+
+            // 3. Meta Pixel Events फायर करें
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Subscribe', { content_name: 'Telegram Channel Join' });
+                fbq('track', 'Lead', { content_name: 'Telegram Community Lead' });
+            }
+
+            // 4. 400ms स्मार्ट डिले (Pixel को 100% डेटा भेजने का समय देता है और एक्सीडेंटल मिस-क्लिक रोकता है)
+            setTimeout(function() {
+                window.location.href = targetUrl;
+                
+                // 2 सेकंड बाद बटन लॉक रीसेट करें
+                setTimeout(() => { isProcessingClick = false; }, 2000);
+            }, 400);
+        }
+
         const contentData = {
             about: {
                 title: "About Us",
