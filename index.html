@@ -198,7 +198,6 @@
             font-size: 11px;
         }
 
-        /* Modal / Pop-up */
         .modal {
             display: none;
             position: fixed;
@@ -264,6 +263,7 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
+    
     fbq('init', '1357428183046183');
     fbq('track', 'PageView');
     </script>
@@ -291,7 +291,7 @@
             <span class="stars">★ 4.9/5</span>
         </div>
 
-        <!-- Button 1 with Anti-Fake Click Protection -->
+        <!-- Button 1 -->
         <a href="https://t.me/+LDjllZiRmQo4M2M1" onclick="trackSubscribeEvent(event, this)" class="cta-button">
             <span>Join Free Telegram Community</span> →
         </a>
@@ -319,7 +319,7 @@
             </div>
         </div>
 
-        <!-- Button 2 with Anti-Fake Click Protection -->
+        <!-- Button 2 -->
         <a href="https://t.me/+LDjllZiRmQo4M2M1" onclick="trackSubscribeEvent(event, this)" class="cta-button">
             <span>Access Free Community</span> →
         </a>
@@ -348,31 +348,52 @@
     <script>
         let isProcessingClick = false;
 
+        // Unique Event ID Generator (Deduplication ke liye)
+        function generateEventID() {
+            return 'sub_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        }
+
         function trackSubscribeEvent(event, element) {
-            // 1. स्पैम और डबल-क्लिक रोकने के लिए
             if (isProcessingClick) return;
             isProcessingClick = true;
 
-            // 2. तुरंत Telegram खुलने से रोकें ताकि Pixel डेटा सही से फायर हो सके
             if (event) {
                 event.preventDefault();
             }
 
             const targetUrl = element.getAttribute('href');
+            const eventID = generateEventID();
 
-            // 3. Meta Pixel Events फायर करें
+            // 1. Client-Side Meta Pixel Real-Time Track
             if (typeof fbq !== 'undefined') {
-                fbq('track', 'Subscribe', { content_name: 'Telegram Channel Join' });
-                fbq('track', 'Lead', { content_name: 'Telegram Community Lead' });
+                fbq('track', 'Subscribe', {
+                    content_name: 'Telegram Channel Join',
+                    status: true,
+                    currency: 'INR',
+                    value: 0.00
+                }, { eventID: eventID });
+
+                fbq('track', 'Lead', {
+                    content_name: 'Telegram Community Lead'
+                }, { eventID: eventID });
             }
 
-            // 4. 400ms स्मार्ट डिले (Pixel को 100% डेटा भेजने का समय देता है और एक्सीडेंटल मिस-क्लिक रोकता है)
+            // 2. Optional: Server-Side Conversions API (CAPI) Webhook Trigger
+            // Agar aap Server Endpoint use kar rahe hain to yahan fetch/beacon dwara event Bhej sakte hain:
+            /*
+            if (navigator.sendBeacon) {
+                const data = new FormData();
+                data.append('event_name', 'Subscribe');
+                data.append('event_id', eventID);
+                navigator.sendBeacon('/api/track-event', data);
+            }
+            */
+
+            // 3. Smart Delay Redirection (Safe execution time for pixel payload)
             setTimeout(function() {
                 window.location.href = targetUrl;
-                
-                // 2 सेकंड बाद बटन लॉक रीसेट करें
                 setTimeout(() => { isProcessingClick = false; }, 2000);
-            }, 400);
+            }, 350);
         }
 
         const contentData = {
